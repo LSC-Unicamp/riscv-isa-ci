@@ -6,7 +6,7 @@ from litex_boards.platforms import (
     sipeed_tang_nano_20k,
     lattice_ecp5_evn,
     lattice_ecp5_vip,
-    colorlight_i5
+    colorlight_i5,
 )
 from platforms.ios import ios_tang_nano_20k, ios_tang_nano_9k, ios_colorlight_i9
 from migen import Module
@@ -15,7 +15,12 @@ from migen import Module
 def check_core(
     board: str,
 ) -> int:  # 0 - ok, 1 - erro ao sintetizar, 2 - erro de execução
-    if not os.path.isfile("build/top.fs"):
+    if not os.path.isfile("build/top.fs") and (
+        board == "tangnano9k" or board == "tangnano20k"
+    ):
+        print("Core não sintetizado")
+        return 1
+    elif not os.path.isfile("build/top.bit") and board == "ecp5_45f":
         print("Core não sintetizado")
         return 1
 
@@ -32,7 +37,9 @@ def build_and_flash_core(
         platform.add_extension(ios_tang_nano_9k)
         platform.add_source("rtl/boards/tangnano.v")
     elif board == "ecp5_45f":
-        platform = colorlight_i5.Platform(board="i9",  revision="7.2", toolchain="trellis")
+        platform = colorlight_i5.Platform(
+            board="i9", revision="7.2", toolchain="trellis"
+        )
         platform.add_extension(ios_colorlight_i9)
         platform.add_source("rtl/boards/ecp5.v")
     else:
