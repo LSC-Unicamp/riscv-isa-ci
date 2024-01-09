@@ -125,7 +125,7 @@ rvsteel_soc #(
     .CLOCK_FREQUENCY          (CLK_HZ             ),
     .UART_BAUD_RATE           (BIT_RATE           ),
     .MEMORY_SIZE              (4096               ),
-    .MEMORY_INIT_FILE         ("hello-world.hex"  ),
+    .MEMORY_INIT_FILE         ("../../hello-world/software/build/hello-world.hex"),
     .BOOT_ADDRESS             (32'h00000000       )
 
   ) rvsteel_soc_instance (

@@ -5,11 +5,11 @@
             "name":"RISC-V STEEL",
             "folder":"stell",
             "files": [
-                "processors/stell/ip/ram-memory.v",
-                "processors/stell/ip/rvsteel-core.v",
-                "processors/stell/ip/uart.v",
-                "processors/stell/ip/system-bus.v",
-                "processors/stell/ip/rvsteel-soc.v",
+                "processors/stell/ip/soc/ram_memory.v",
+                "processors/stell/ip/core/rvsteel_core.v",
+                "processors/stell/ip/soc/uart.v",
+                "processors/stell/ip/soc/system_bus.v",
+                "processors/stell/ip/soc/rvsteel_soc.v",
                 "rtl/tools/uart_tx.v",
                 "rtl/tools/uart_rx.v",
                 "rtl/controller_steel.v"
