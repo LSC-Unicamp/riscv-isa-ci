@@ -6,9 +6,9 @@ from litex_boards.platforms import (
     sipeed_tang_nano_20k,
     lattice_ecp5_evn,
     lattice_ecp5_vip,
+    colorlight_i5
 )
-from platforms import ecp5_45f_platform
-from platforms.ios import ios_tang_nano_20k, ios_tang_nano_9k
+from platforms.ios import ios_tang_nano_20k, ios_tang_nano_9k, ios_colorlight_i9
 from migen import Module
 
 
@@ -32,7 +32,8 @@ def build_and_flash_core(
         platform.add_extension(ios_tang_nano_9k)
         platform.add_source("rtl/boards/tangnano.v")
     elif board == "ecp5_45f":
-        platform = ecp5_45f_platform.Platform()
+        platform = colorlight_i5.Platform(board="i9",  revision="7.2", toolchain="trellis")
+        platform.add_extension(ios_colorlight_i9)
         platform.add_source("rtl/boards/ecp5.v")
     else:
         platform = sipeed_tang_nano_20k.Platform()

@@ -25,7 +25,7 @@ def main() -> None:
     data: dict[str, any] = open_config_file()
     check_and_clone_repositories(data)
 
-    build_and_check_cores(data)
+    build_and_check_cores(data, board="ecp5_45f")
 
 
 # 111100
